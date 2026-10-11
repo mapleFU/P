@@ -69,7 +69,7 @@ pc -proj:ClientServer.pproj -generate:PSym
     ....... includes p file: P/Tutorial/1_ClientServer/PSrc/ClientServerModules.p
     ....... includes p file: P/Tutorial/1_ClientServer/PSpec/BankBalanceCorrect.p
     ....... includes p file: P/Tutorial/1_ClientServer/PTst/TestDriver.p
-    ....... includes p file: P/Tutorial/1_ClientServer/PTst/Testscript.p
+    ....... includes p file: P/Tutorial/1_ClientServer/PTst/TestScript.p
     ----------------------------------------
     ----------------------------------------
     Parsing ...

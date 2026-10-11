@@ -560,8 +560,8 @@ fun SetupClientServerSystem(numClients: int)
 }
 </TestDriver.p>
 
-Here is the file Testscript.p:
-<Testscript.p>
+Here is the file TestScript.p:
+<TestScript.p>
 /* This file contains three different model checking scenarios */
 
 // assert the properties for the single client and single server scenario
@@ -579,7 +579,7 @@ test tcMultipleClients [main=TestWithMultipleClients]:
   assert BankBalanceIsAlwaysCorrect, GuaranteedWithDrawProgress in
   (union Client, AbstractBank, { TestWithSingleClient });
 
-</Testscript.p>
+</TestScript.p>
 </PTst>
 </P_project_code>
 
@@ -1072,15 +1072,15 @@ machine TestWithCrazyUser
 }
 </TestDriver.p>
 
-Here is the file Testscript.p:
-<Testscript.p>
+Here is the file TestScript.p:
+<TestScript.p>
 // there are two test cases defined in the EspressoMachine project.
 test tcSaneUserUsingCoffeeMachine [main=TestWithSaneUser]:
   assert EspressoMachineModesOfOperation in (union { TestWithSaneUser }, EspressoMachine, Users);
 
 test tcCrazyUserUsingCoffeeMachine [main=TestWithCrazyUser]:
   assert EspressoMachineModesOfOperation in (union { TestWithCrazyUser }, EspressoMachine, Users);
-</Testscript.p>
+</TestScript.p>
 
 Here is the file Users.p:
 <Users.p>

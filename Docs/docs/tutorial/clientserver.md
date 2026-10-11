@@ -93,7 +93,7 @@ The P Specifications ([PSpec](https://github.com/p-org/P/blob/master/Tutorial/1_
 
 The test scenarios folder in P has two parts: TestDrivers and TestScripts. TestDrivers are collections of state machines that implement the test harnesses (or environment state machines) for different test scenarios. TestScripts are collections of test cases that are automatically run by the P checker.
 
-The test scenarios folder for ClientServer ([PTst](https://github.com/p-org/P/tree/master/Tutorial/1_ClientServer/PTst)) consists of two files [TestDriver.p](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/TestDriver.p) and [TestScript.p](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/Testscript.p).
+The test scenarios folder for ClientServer ([PTst](https://github.com/p-org/P/tree/master/Tutorial/1_ClientServer/PTst)) consists of two files [TestDriver.p](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/TestDriver.p) and [TestScript.p](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/TestScript.p).
 
 ??? tip "[Expand]: Let's walk through TestDriver.p"
     - ([L49 - L72](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/TestDriver.p#L49-L72)) &rarr; Function `SetupClientServerSystem` takes as input the number of clients to be created and configures the ClientServer system by creating the `Client` and `BankServer` machines. The [`CreateRandomInitialAccounts`](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/TestDriver.p#L34-L47) function uses the [`choose`](../manual/expressions.md#choose) primitive to randomly initialize the accounts map.
@@ -103,7 +103,7 @@ The test scenarios folder for ClientServer ([PTst](https://github.com/p-org/P/tr
 ??? tip "[Expand]: Let's walk through TestScript.p"
     P allows programmers to write different test cases. Each test case is checked separately and can use a different test driver. Using different test drivers triggers different behaviors in the system under test, as it implies different system configurations and input generators. To better understand the P test cases, please look at manual: [P test cases](../manual/testcases.md).
 
-    - ([L4 - L16](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/Testscript.p#L4-L16)) &rarr; Declares three test cases each checking a different scenario and system. The system under test is the `union` of the modules representing each component in the system (manual: [P module system](../manual/modulesystem.md#union-module)). The `assert` module constructor is used to attach monitors or specifications to be checked on the modules (manual: [assert](../manual/modulesystem.md#assert-monitors-module)).
+    - ([L4 - L16](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/TestScript.p#L4-L16)) &rarr; Declares three test cases each checking a different scenario and system. The system under test is the `union` of the modules representing each component in the system (manual: [P module system](../manual/modulesystem.md#union-module)). The `assert` module constructor is used to attach monitors or specifications to be checked on the modules (manual: [assert](../manual/modulesystem.md#assert-monitors-module)).
     - In the `tcAbstractServer` test case, instead of composing with the Bank module, we use the AbstractBank module. Hence, in the composed system, whenever the creation of a BankServer machine is invoked the binding will instead create an AbstractBankServer machine.
 
 ---
@@ -118,7 +118,7 @@ The ClientServer tutorial demonstrates P's parameterized testing capabilities th
    
 
 ??? tip "[Expand]: Let's walk through parameterized TestScripts.p"
-    - ([L18 - L21](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/Testscript.p#L18-L21)) &rarr; Parameterized test case `tcParameterizedMultipleClients` with `param (nClients in [2, 3, 4])` demonstrates how to systematically test the bank system with different numbers of concurrent clients (2, 3, and 4 clients), generating 3 distinct test scenarios.
+    - ([L18 - L21](https://github.com/p-org/P/blob/master/Tutorial/1_ClientServer/PTst/TestScript.p#L18-L21)) &rarr; Parameterized test case `tcParameterizedMultipleClients` with `param (nClients in [2, 3, 4])` demonstrates how to systematically test the bank system with different numbers of concurrent clients (2, 3, and 4 clients), generating 3 distinct test scenarios.
     - This parameterized approach allows verification of the bank's correctness properties under different concurrency levels, ensuring that the `BankBalanceIsAlwaysCorrect` and `GuaranteedWithDrawProgress` specifications hold regardless of client count.
     - The test cases generated are: `tcParameterizedMultipleClients___nClients_2`, `tcParameterizedMultipleClients___nClients_3`, and `tcParameterizedMultipleClients___nClients_4`, each testing the system with the corresponding number of clients.
 
@@ -146,7 +146,7 @@ p compile
     ....... includes p file: P/Tutorial/1_ClientServer/PSrc/ClientServerModules.p
     ....... includes p file: P/Tutorial/1_ClientServer/PSpec/BankBalanceCorrect.p
     ....... includes p file: P/Tutorial/1_ClientServer/PTst/TestDriver.p
-    ....... includes p file: P/Tutorial/1_ClientServer/PTst/Testscript.p
+    ....... includes p file: P/Tutorial/1_ClientServer/PTst/TestScript.p
     ----------------------------------------
     Parsing ...
     Type checking ...
